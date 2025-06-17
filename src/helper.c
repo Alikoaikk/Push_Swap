@@ -6,7 +6,7 @@
 /*   By: akoaik <akoaik@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 22:28:58 by akoaik            #+#    #+#             */
-/*   Updated: 2025/06/15 19:44:28 by akoaik           ###   ########.fr       */
+/*   Updated: 2025/06/18 00:37:03 by akoaik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,4 @@ long	ft_atol(const char *str)
 		i++;
 	}
 	return (result * sign);
-}
-
-int	parse(char **arg)
-{
-	int		i ;
-	long	num ;
-
-	i = 0 ;
 }
