@@ -6,7 +6,7 @@
 /*   By: akoaik <akoaik@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 23:43:39 by akoaik            #+#    #+#             */
-/*   Updated: 2025/06/18 15:07:49 by akoaik           ###   ########.fr       */
+/*   Updated: 2025/06/19 14:58:54 by akoaik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ void	parse_args(int argc, char **argv, t_node **stack)
 			write(2, "Error\n", 6);
 			exit(1);
 		}
-		push(stack, (int)num);
+		append_node(stack, (int)num);
 		i++;
 	}
 }
@@ -110,7 +110,7 @@ void	parse_split(char *arg, t_node **stack)
 			write(2, "Error\n", 6);
 			exit(1);
 		}
-		push(stack, (int)num);
+		append_node(stack, (int)num);
 		free(split[i]);
 		i++;
 	}

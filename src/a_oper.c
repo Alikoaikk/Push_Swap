@@ -6,7 +6,7 @@
 /*   By: akoaik <akoaik@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 15:26:34 by akoaik            #+#    #+#             */
-/*   Updated: 2025/06/19 01:16:52 by akoaik           ###   ########.fr       */
+/*   Updated: 2025/06/19 08:52:33 by akoaik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,4 +56,25 @@ void	ra(t_node **a, int print)
 	first->next = NULL ;
 	if (print)
 		write(1, "ra\n", 3);
+}
+
+void	rra(t_node **a, int print)
+{
+	t_node	*prev;
+	t_node	*last;
+
+	if (!*a || !(*a)->next)
+		return ;
+	prev = NULL;
+	last = *a;
+	while (last->next)
+	{
+		prev = last;
+		last = last->next;
+	}
+	prev->next = NULL;
+	last->next = *a;
+	*a = last;
+	if (print)
+		write(1, "rra\n", 4);
 }

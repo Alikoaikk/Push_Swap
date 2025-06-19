@@ -6,7 +6,7 @@
 /*   By: akoaik <akoaik@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 22:29:11 by akoaik            #+#    #+#             */
-/*   Updated: 2025/06/19 01:21:56 by akoaik           ###   ########.fr       */
+/*   Updated: 2025/06/19 17:01:00 by akoaik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 typedef struct s_node
 {
 	int				value;
+	int				index;
 	struct s_node	*next ;
 }					t_node;
 
@@ -39,5 +40,16 @@ void	pb(t_node **a, t_node **b);
 void	rb(t_node **b, int print);
 void	ss(t_node **a, t_node **b);
 void	rr(t_node **a, t_node **b);
+void	rrb(t_node **b, int print);
+void	rra(t_node **a, int print);
+void	bubble_sort(int *arr, int size);
+int		*extract_values(t_node *stack, int size);
+void	push_swap(t_node **a, t_node **b);
+void	assign_indexes(t_node *stack, int *sorted_arr, int size);
+int		stack_size(t_node *stack);
+void	radix_sort(t_node **a, t_node **b);
+void	append_node(t_node **stack, int value);
+t_node	*new_node(int value);
+void	free_stack(t_node *stack);
 
 #endif
