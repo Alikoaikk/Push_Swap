@@ -6,7 +6,7 @@
 /*   By: akoaik <akoaik@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/11 18:55:44 by mtohmeh           #+#    #+#             */
-/*   Updated: 2025/06/20 16:08:50 by akoaik           ###   ########.fr       */
+/*   Updated: 2025/06/20 16:49:45 by akoaik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,17 @@ void	sort_three(t_node **a, int *arr)
 	else if (arr[0] > arr[1] && arr[1] > arr[2])
 	{
 		sa(a);
-		rra(a);
+		rra(a, 1);
 	}
 	else if (arr[0] > arr[1] && arr[1] < arr[2] && arr[0] > arr[2])
-		ra(a);
+		ra(a, 1);
 	else if (arr[0] < arr[1] && arr[1] > arr[2] && arr[0] < arr[2])
 	{
 		sa(a);
-		ra(a);
+		ra(a, 1);
 	}
 	else if (arr[0] < arr[1] && arr[1] > arr[2] && arr[0] > arr[2])
-		rra(a);
+		rra(a, 1);
 }
 
 void	sort_four(t_node **a, t_node **b, int *arr)
@@ -42,7 +42,7 @@ void	sort_four(t_node **a, t_node **b, int *arr)
 	minindex = find_min_index(arr, 4);
 	while (i < minindex)
 	{
-		ra(a);
+		ra(a, 1);
 		i++;
 	}
 	pb(a, b);
@@ -62,7 +62,7 @@ void	sort_five(t_node **a, t_node **b, int *arr)
 	minindex = find_min_index(arr, 5);
 	while (i < minindex)
 	{
-		ra(a);
+		ra(a, 1);
 		i++;
 	}
 	pb(a, b);
@@ -81,7 +81,7 @@ void	small_sort(t_node **a, t_node **b, int *arr)
 		return ;
 	if (size == 2)
 	{
-		if (arr[0] > arr[1])
+		if ((*a)->value > (*a)->next->value)
 			sa(a);
 	}
 	else if (size == 3)

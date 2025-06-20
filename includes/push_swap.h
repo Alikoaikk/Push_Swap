@@ -6,7 +6,7 @@
 /*   By: akoaik <akoaik@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 22:29:11 by akoaik            #+#    #+#             */
-/*   Updated: 2025/06/20 15:30:06 by akoaik           ###   ########.fr       */
+/*   Updated: 2025/06/20 16:15:51 by akoaik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,6 @@ int		find_min_index(int *arr, int size);
 void	sort_three(t_node **a, int *arr);
 void	sort_four(t_node **a, t_node **b, int *arr);
 void	sort_five(t_node **a, t_node **b, int *arr);
-void	optimize_small_sort(t_node **a, t_node **b, int *arr);
+void	small_sort(t_node **a, t_node **b, int *arr);
 
 #endif
