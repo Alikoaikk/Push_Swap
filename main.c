@@ -6,7 +6,7 @@
 /*   By: akoaik <akoaik@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 23:06:28 by akoaik            #+#    #+#             */
-/*   Updated: 2025/06/19 17:01:43 by akoaik           ###   ########.fr       */
+/*   Updated: 2025/06/20 16:08:59 by akoaik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ int	main(int argc, char **argv)
 {
 	t_node	*a;
 	t_node	*b;
+	int		size ;
+	int		*arr ;
 
 	a = NULL ;
 	b = NULL ;
@@ -25,7 +27,13 @@ int	main(int argc, char **argv)
 		parse_split(argv[1], &a);
 	else
 		parse_args(argc, argv, &a);
-	push_swap(&a, &b);
+	size = stack_size(a);
+	*arr = extract_values(a, size);
+	if (size <= 5)
+		small_sort(&a, &b, arr);
+	else
+		push_swap(&a, &b);
+	free(arr);
 	free_stack(a);
 	free_stack(b);
 	return (0);
