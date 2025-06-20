@@ -6,94 +6,94 @@
 /*   By: akoaik <akoaik@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/11 18:55:44 by mtohmeh           #+#    #+#             */
-/*   Updated: 2025/06/20 16:49:45 by akoaik           ###   ########.fr       */
+/*   Updated: 2025/06/20 18:31:30 by akoaik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sort_three(t_node **a, int *arr)
+void	sort_three(t_node **a)
 {
-	if (arr[0] > arr[1] && arr[1] < arr[2] && arr[0] < arr[2])
+	int	first = (*a)->value;
+	int	second = (*a)->next->value;
+	int	third = (*a)->next->next->value;
+
+	if (first > second && second < third && first < third)
 		sa(a);
-	else if (arr[0] > arr[1] && arr[1] > arr[2])
+	else if (first > second && second > third)
 	{
 		sa(a);
 		rra(a, 1);
 	}
-	else if (arr[0] > arr[1] && arr[1] < arr[2] && arr[0] > arr[2])
+	else if (first > second && second < third && first > third)
 		ra(a, 1);
-	else if (arr[0] < arr[1] && arr[1] > arr[2] && arr[0] < arr[2])
+	else if (first < second && second > third && first < third)
 	{
 		sa(a);
 		ra(a, 1);
 	}
-	else if (arr[0] < arr[1] && arr[1] > arr[2] && arr[0] > arr[2])
+	else if (first < second && second > third && first > third)
 		rra(a, 1);
 }
 
-void	sort_four(t_node **a, t_node **b, int *arr)
+int	find_min_index_stack(t_node *a)
 {
-	int	minindex;
-	int	i;
-	int	*newarr;
+	int	min = a->value;
+	int	index = 0;
+	int	min_index = 0;
+	t_node *current = a;
 
-	i = 0;
-	minindex = find_min_index(arr, 4);
-	while (i < minindex)
+	while (current)
 	{
-		ra(a, 1);
-		i++;
+		if (current->value < min)
+		{
+			min = current->value;
+			min_index = index;
+		}
+		current = current->next;
+		index++;
 	}
+	return (min_index);
+}
+
+void	sort_four(t_node **a, t_node **b)
+{
+	int	min_index = find_min_index_stack(*a);
+
+	while (min_index--)
+		ra(a, 1);
 	pb(a, b);
-	newarr = stack_to_array(*a, 3);
-	sort_three(a, newarr);
-	free(newarr);
+	sort_three(a);
 	pa(a, b);
 }
 
-void	sort_five(t_node **a, t_node **b, int *arr)
+void	sort_five(t_node **a, t_node **b)
 {
-	int	minindex;
-	int	i;
-	int	*newarray;
+	int	min_index = find_min_index_stack(*a);
 
-	i = 0;
-	minindex = find_min_index(arr, 5);
-	while (i < minindex)
-	{
+	while (min_index--)
 		ra(a, 1);
-		i++;
-	}
 	pb(a, b);
-	newarray = stack_to_array(*a, 4);
-	sort_four(a, b, newarray);
-	free(newarray);
+	sort_four(a, b);
 	pa(a, b);
 }
 
-void	small_sort(t_node **a, t_node **b, int *arr)
+void	small_sort(t_node **a, t_node **b)
 {
-	int	size;
+	int	size = stack_size(*a);
 
-	size = stack_size(*a);
 	if (size == 1)
 		return ;
-	if (size == 2)
+	else if (size == 2)
 	{
 		if ((*a)->value > (*a)->next->value)
 			sa(a);
 	}
 	else if (size == 3)
-	{
-		sort_three(a, arr);
-	}
+		sort_three(a);
 	else if (size == 4)
-	{
-		sort_four(a, b, arr);
-	}
+		sort_four(a, b);
 	else if (size == 5)
-	{
-		sort_five(a, b, arr);
-	}
+		sort_five(a, b);
 }
+
