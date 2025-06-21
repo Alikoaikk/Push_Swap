@@ -6,14 +6,13 @@
 /*   By: akoaik <akoaik@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 22:29:11 by akoaik            #+#    #+#             */
-/*   Updated: 2025/06/20 18:38:57 by akoaik           ###   ########.fr       */
+/*   Updated: 2025/06/21 20:08:39 by akoaik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include <stdio.h>
 # include <stdlib.h>
 # include <limits.h>
 # include <unistd.h>

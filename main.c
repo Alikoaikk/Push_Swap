@@ -6,26 +6,11 @@
 /*   By: akoaik <akoaik@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 23:06:28 by akoaik            #+#    #+#             */
-/*   Updated: 2025/06/20 18:39:09 by akoaik           ###   ########.fr       */
+/*   Updated: 2025/06/21 20:00:28 by akoaik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-
-// void	view(t_node *stack)
-// {
-// 	t_node	*tmp ;
-
-//     if (!stack)
-//         write(2, "Stack empty", 11);
-// 	tmp = stack;
-// 	while (tmp)
-// 	{
-// 		printf("Value: %d\n", tmp->value);
-// 		tmp = tmp->next;
-// 	}
-// }
 
 int	main(int argc, char **argv)
 {
@@ -50,3 +35,17 @@ int	main(int argc, char **argv)
 	free_stack(b);
 	return (0);
 }
+
+// void	view(t_node *stack)
+// {
+// 	t_node	*tmp ;
+
+//     if (!stack)
+//         write(2, "Stack empty", 11);
+// 	tmp = stack;
+// 	while (tmp)
+// 	{
+// 		printf("Value: %d\n", tmp->value);
+// 		tmp = tmp->next;
+// 	}
+// }

@@ -6,7 +6,7 @@
 /*   By: akoaik <akoaik@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/11 18:55:44 by mtohmeh           #+#    #+#             */
-/*   Updated: 2025/06/20 18:31:30 by akoaik           ###   ########.fr       */
+/*   Updated: 2025/06/21 20:03:50 by akoaik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,13 @@
 
 void	sort_three(t_node **a)
 {
-	int	first = (*a)->value;
-	int	second = (*a)->next->value;
-	int	third = (*a)->next->next->value;
+	int	first ;
+	int	second ;
+	int	third ;
 
+	first = (*a)->value ;
+	second = (*a)->next->value ;
+	third = (*a)->next->next->value ;
 	if (first > second && second < third && first < third)
 		sa(a);
 	else if (first > second && second > third)
@@ -38,11 +41,15 @@ void	sort_three(t_node **a)
 
 int	find_min_index_stack(t_node *a)
 {
-	int	min = a->value;
-	int	index = 0;
-	int	min_index = 0;
-	t_node *current = a;
+	int		min;
+	int		index;
+	int		min_index;
+	t_node	*current;
 
+	min = a->value ;
+	index = 0 ;
+	min_index = 0 ;
+	current = a ;
 	while (current)
 	{
 		if (current->value < min)
@@ -58,8 +65,9 @@ int	find_min_index_stack(t_node *a)
 
 void	sort_four(t_node **a, t_node **b)
 {
-	int	min_index = find_min_index_stack(*a);
+	int	min_index;
 
+	min_index = find_min_index_stack(*a);
 	while (min_index--)
 		ra(a, 1);
 	pb(a, b);
@@ -69,8 +77,9 @@ void	sort_four(t_node **a, t_node **b)
 
 void	sort_five(t_node **a, t_node **b)
 {
-	int	min_index = find_min_index_stack(*a);
+	int	min_index ;
 
+	min_index = find_min_index_stack(*a);
 	while (min_index--)
 		ra(a, 1);
 	pb(a, b);
@@ -80,8 +89,9 @@ void	sort_five(t_node **a, t_node **b)
 
 void	small_sort(t_node **a, t_node **b)
 {
-	int	size = stack_size(*a);
+	int	size ;
 
+	size = stack_size(*a);
 	if (size == 1)
 		return ;
 	else if (size == 2)
@@ -96,4 +106,3 @@ void	small_sort(t_node **a, t_node **b)
 	else if (size == 5)
 		sort_five(a, b);
 }
-
