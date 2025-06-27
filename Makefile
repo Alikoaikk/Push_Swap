@@ -1,8 +1,18 @@
-CC      = gcc
+CC      = cc
 CFLAGS  = -Wall -Wextra -Werror -I includes
 
 SRC_DIR = src
-SRC     = $(wildcard $(SRC_DIR)/*.c) main.c
+SRC     = $(SRC_DIR)/a_oper.c \
+          $(SRC_DIR)/b_oper.c \
+          $(SRC_DIR)/ft_split.c \
+          $(SRC_DIR)/oper.c \
+          $(SRC_DIR)/parsing.c \
+          $(SRC_DIR)/push_swap.c \
+          $(SRC_DIR)/radix_sort.c \
+          $(SRC_DIR)/sort_five.c \
+          $(SRC_DIR)/st_arr.c \
+          $(SRC_DIR)/stack_operation.c \
+          main.c
 OBJ     = $(SRC:.c=.o)
 NAME    = push_swap
 
