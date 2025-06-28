@@ -6,7 +6,7 @@
 /*   By: akoaik <akoaik@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 22:29:11 by akoaik            #+#    #+#             */
-/*   Updated: 2025/06/21 20:08:39 by akoaik           ###   ########.fr       */
+/*   Updated: 2025/06/28 19:26:14 by akoaik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,5 +56,6 @@ void	sort_three(t_node **a);
 void	sort_four(t_node **a, t_node **b);
 void	sort_five(t_node **a, t_node **b);
 void	small_sort(t_node **a, t_node **b);
+int		is_duplicate(t_node *stack, int value);
 
 #endif

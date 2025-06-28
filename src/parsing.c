@@ -6,7 +6,7 @@
 /*   By: akoaik <akoaik@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 23:43:39 by akoaik            #+#    #+#             */
-/*   Updated: 2025/06/19 14:58:54 by akoaik           ###   ########.fr       */
+/*   Updated: 2025/06/28 19:29:17 by akoaik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,46 +32,10 @@ int	is_valide(const char *str)
 	return (1);
 }
 
-int	is_duplicate(t_node *stack, int value)
-{
-	while (stack)
-	{
-		if (stack->value == value)
-			return (1);
-		stack = stack->next;
-	}
-	return (0);
-}
-
-long	ft_atol(const char *str)
-{
-	long	result ;
-	int		sign ;
-	int		i ;
-
-	result = 0 ;
-	sign = 1 ;
-	i = 0 ;
-	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
-		i++;
-	if (str[i] == '-' || str[i] == '+')
-	{
-		if (str[i] == '-')
-			sign = -1;
-		i++;
-	}
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		result = result * 10 + (str[i] - '0');
-		i++;
-	}
-	return (result * sign);
-}
-
 void	parse_args(int argc, char **argv, t_node **stack)
 {
-	int		i;
-	long	num ;
+	int			i;
+	long		num;
 
 	i = 1;
 	while (i < argc)
@@ -88,19 +52,27 @@ void	parse_args(int argc, char **argv, t_node **stack)
 	}
 }
 
-void	parse_split(char *arg, t_node **stack)
+void	free_split(char **split)
 {
-	char	**split;
+	int	i;
+
+	i = 0 ;
+	if (!split)
+		return ;
+	while (split[i])
+	{
+		free(split[i]);
+		i++;
+	}
+	free(split);
+}
+
+static void	parse_split_helper(char **split, t_node **stack)
+{
 	int		i;
 	long	num;
 
 	i = 0;
-	split = ft_split(arg, ' ');
-	if (!split)
-	{
-		write(2, "Error\n", 6);
-		exit(1);
-	}
 	while (split[i])
 	{
 		num = ft_atol(split[i]);
@@ -108,11 +80,25 @@ void	parse_split(char *arg, t_node **stack)
 			|| is_duplicate(*stack, (int)num))
 		{
 			write(2, "Error\n", 6);
+			free_split(split);
+			free_stack(*stack);
 			exit(1);
 		}
 		append_node(stack, (int)num);
-		free(split[i]);
 		i++;
 	}
-	free(split);
+}
+
+void	parse_split(char *arg, t_node **stack)
+{
+	char	**split;
+
+	split = ft_split(arg, ' ');
+	if (!split)
+	{
+		write(2, "Error\n", 6);
+		exit(1);
+	}
+	parse_split_helper(split, stack);
+	free_split(split);
 }
