@@ -6,7 +6,7 @@
 /*   By: akoaik <akoaik@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 23:43:39 by akoaik            #+#    #+#             */
-/*   Updated: 2025/06/28 19:29:17 by akoaik           ###   ########.fr       */
+/*   Updated: 2025/06/30 20:46:39 by akoaik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,26 +32,6 @@ int	is_valide(const char *str)
 	return (1);
 }
 
-void	parse_args(int argc, char **argv, t_node **stack)
-{
-	int			i;
-	long		num;
-
-	i = 1;
-	while (i < argc)
-	{
-		num = ft_atol(argv[i]);
-		if (!is_valide(argv[i]) || num < INT_MIN || num > INT_MAX
-			|| is_duplicate(*stack, (int)num))
-		{
-			write(2, "Error\n", 6);
-			exit(1);
-		}
-		append_node(stack, (int)num);
-		i++;
-	}
-}
-
 void	free_split(char **split)
 {
 	int	i;
@@ -66,6 +46,29 @@ void	free_split(char **split)
 	}
 	free(split);
 }
+
+void	parse_args(int argc, char **argv, t_node **stack)
+{
+	int			i;
+	long		num;
+
+	i = 1;
+	while (i < argc)
+	{
+		num = ft_atol(argv[i]);
+		if (!is_valide(argv[i]) || num < INT_MIN || num > INT_MAX
+			|| is_duplicate(*stack, (int)num))
+		{
+			write(2, "Error\n", 6);
+			free_stack(*stack);
+			exit(1);
+		}
+		append_node(stack, (int)num);
+		i++;
+	}
+}
+
+
 
 static void	parse_split_helper(char **split, t_node **stack)
 {
